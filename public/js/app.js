@@ -1970,15 +1970,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      showModal: false
+      showModal: false,
+      producto: '',
+      cantidad: '',
+      estado: '',
+      bodega: '',
+      observaciones: '',
+      arrayProductos: []
     };
   },
-  methods: {},
+  methods: {
+    getProductos: function getProductos() {
+      var me = this;
+      var url = '/productos';
+      axios.get(url).then(function (response) {
+        me.arrayProductos = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    storeProductos: function storeProductos() {
+      var me = this;
+      var url = '/productos/guardar';
+      axios.post(url, {
+        'producto': this.producto,
+        'cantidad': this.cantidad,
+        'estado': this.estado,
+        'bodega': this.bodega,
+        'observaciones': this.observaciones
+      }).then(function (response) {
+        me.clearData();
+        me.getProductos();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    clearData: function clearData() {
+      this.showModal = false, this.producto = '', this.cantidad = '', this.estado = '', this.bodega = '', this.observaciones = '';
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
+    this.getProductos();
   }
 });
 
@@ -6527,7 +6581,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n", ""]);
+exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n\n\n/*Fin style for table */\n", ""]);
 
 // exports
 
@@ -38042,7 +38096,46 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _c("div", { staticClass: "row mt-5" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "table",
+          {
+            staticClass:
+              "table table-bordered table-hover table-striped table-sm"
+          },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.arrayProductos, function(producto) {
+                return _c("tr", { key: producto.id }, [
+                  _c("td", {
+                    domProps: { textContent: _vm._s(producto.producto) }
+                  }),
+                  _vm._v(" "),
+                  _c("td", {
+                    domProps: { textContent: _vm._s(producto.bodega) }
+                  }),
+                  _vm._v(" "),
+                  _c("td", {
+                    domProps: { textContent: _vm._s(producto.cantidad) }
+                  }),
+                  _vm._v(" "),
+                  _c("td", {
+                    domProps: { textContent: _vm._s(producto.estado) }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _vm.showModal
       ? _c(
@@ -38104,8 +38197,25 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.producto,
+                                    expression: "producto"
+                                  }
+                                ],
                                 staticClass: "form-control",
-                                attrs: { type: "text", id: "inputProducto" }
+                                attrs: { type: "text", id: "inputProducto" },
+                                domProps: { value: _vm.producto },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.producto = $event.target.value
+                                  }
+                                }
                               })
                             ]),
                             _vm._v(" "),
@@ -38121,10 +38231,27 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.cantidad,
+                                        expression: "cantidad"
+                                      }
+                                    ],
                                     staticClass: "form-control",
                                     attrs: {
                                       type: "number",
                                       id: "inputCantidad"
+                                    },
+                                    domProps: { value: _vm.cantidad },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.cantidad = $event.target.value
+                                      }
                                     }
                                   })
                                 ]
@@ -38143,8 +38270,37 @@ var render = function() {
                                   _c(
                                     "select",
                                     {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.estado,
+                                          expression: "estado"
+                                        }
+                                      ],
                                       staticClass: "form-control",
-                                      attrs: { id: "selectEstado" }
+                                      attrs: { id: "selectEstado" },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.estado = $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        }
+                                      }
                                     },
                                     [
                                       _c(
@@ -38172,8 +38328,25 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.bodega,
+                                    expression: "bodega"
+                                  }
+                                ],
                                 staticClass: "form-control",
-                                attrs: { type: "text", id: "inputBodega" }
+                                attrs: { type: "text", id: "inputBodega" },
+                                domProps: { value: _vm.bodega },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.bodega = $event.target.value
+                                  }
+                                }
                               })
                             ]),
                             _vm._v(" "),
@@ -38185,8 +38358,25 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.observaciones,
+                                    expression: "observaciones"
+                                  }
+                                ],
                                 staticClass: "form-control",
-                                attrs: { id: "inputObservaciones", rows: "2" }
+                                attrs: { id: "inputObservaciones", rows: "2" },
+                                domProps: { value: _vm.observaciones },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.observaciones = $event.target.value
+                                  }
+                                }
                               })
                             ])
                           ])
@@ -38202,7 +38392,8 @@ var render = function() {
                               "button",
                               {
                                 staticClass: "btn btn-dark",
-                                attrs: { type: "button" }
+                                attrs: { type: "button" },
+                                on: { click: _vm.storeProductos }
                               },
                               [_vm._v("Guardar")]
                             ),
@@ -38250,30 +38441,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-5" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c(
-          "table",
-          { staticClass: "table table-bordered table-hover table-striped" },
-          [
-            _c("thead", { staticClass: "thead-dark" }, [
-              _c("tr", [
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Producto")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Cantidad")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Bodega")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Estado")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("Gestión")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [_c("tr"), _vm._v(" "), _c("tr")])
-          ]
-        )
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Producto")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Bodega")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cantidad")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Estado")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Gestión")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "button",
+        { staticClass: "btn btn-dark btn-sm", attrs: { type: "button" } },
+        [_vm._v("Cambiar estado")]
+      )
     ])
   }
 ]

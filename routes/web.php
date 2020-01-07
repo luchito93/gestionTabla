@@ -18,4 +18,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/productos', 'ProductoController@index');
+Route::post('/productos/guardar', 'ProductoController@store');
+Route::put('/productos/actualizar', 'ProductoController@update');
 Route::get('/home', 'HomeController@index')->name('home');
