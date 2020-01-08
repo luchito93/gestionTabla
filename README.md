@@ -11,7 +11,7 @@
 ![](Crud.gif)
 
 
-## Intalacion del Projecto
+## Intalación del Proyecto
 
 - Clonar
 - Instala las dependencias de laravel, recuerda que debes tener tu archivo .env creado
