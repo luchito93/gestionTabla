@@ -2104,6 +2104,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2116,7 +2128,8 @@ __webpack_require__.r(__webpack_exports__);
       bodega: '',
       observaciones: '',
       objectProductos: {},
-      buscarProducto: ''
+      buscarProducto: '',
+      errores: ""
     };
   },
   methods: {
@@ -2146,6 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
         me.clearData();
         me.getProductos();
       })["catch"](function (error) {
+        me.errores = error.response.data.errors;
         console.log(error);
       });
     },
@@ -2180,7 +2194,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     clearData: function clearData() {
-      this.showModal = false, this.producto = '', this.cantidad = '', this.estado = '', this.bodega = '', this.observaciones = '';
+      this.showModal = false, this.producto = '', this.cantidad = '', this.estado = '', this.bodega = '', this.observaciones = '', this.errores = '';
     }
   },
   mounted: function mounted() {
@@ -39020,11 +39034,7 @@ var render = function() {
                                 "span",
                                 {
                                   attrs: { "aria-hidden": "true" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.showModal = false
-                                    }
-                                  }
+                                  on: { click: _vm.clearData }
                                 },
                                 [_vm._v("X")]
                               )
@@ -39059,7 +39069,20 @@ var render = function() {
                                     _vm.producto = $event.target.value
                                   }
                                 }
-                              })
+                              }),
+                              _vm._v(" "),
+                              _vm.errores.producto
+                                ? _c("div", [
+                                    _c("span", {
+                                      staticStyle: { color: "red" },
+                                      domProps: {
+                                        textContent: _vm._s(
+                                          _vm.errores.producto[0]
+                                        )
+                                      }
+                                    })
+                                  ])
+                                : _vm._e()
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-group row" }, [
@@ -39096,7 +39119,20 @@ var render = function() {
                                         _vm.cantidad = $event.target.value
                                       }
                                     }
-                                  })
+                                  }),
+                                  _vm._v(" "),
+                                  _vm.errores.cantidad
+                                    ? _c("div", [
+                                        _c("span", {
+                                          staticStyle: { color: "red" },
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              _vm.errores.cantidad[0]
+                                            )
+                                          }
+                                        })
+                                      ])
+                                    : _vm._e()
                                 ]
                               ),
                               _vm._v(" "),
@@ -39160,7 +39196,20 @@ var render = function() {
                                         _vm._v("Inactivo")
                                       ])
                                     ]
-                                  )
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.errores.estado
+                                    ? _c("div", [
+                                        _c("span", {
+                                          staticStyle: { color: "red" },
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              _vm.errores.estado[0]
+                                            )
+                                          }
+                                        })
+                                      ])
+                                    : _vm._e()
                                 ]
                               )
                             ]),
@@ -39223,7 +39272,20 @@ var render = function() {
                                     _vm._v("Sur")
                                   ])
                                 ]
-                              )
+                              ),
+                              _vm._v(" "),
+                              _vm.errores.bodega
+                                ? _c("div", [
+                                    _c("span", {
+                                      staticStyle: { color: "red" },
+                                      domProps: {
+                                        textContent: _vm._s(
+                                          _vm.errores.bodega[0]
+                                        )
+                                      }
+                                    })
+                                  ])
+                                : _vm._e()
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-group" }, [
@@ -39279,11 +39341,7 @@ var render = function() {
                               {
                                 staticClass: "btn btn-outline-dark",
                                 attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.showModal = false
-                                  }
-                                }
+                                on: { click: _vm.clearData }
                               },
                               [_vm._v("Cancelar")]
                             )

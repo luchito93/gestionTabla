@@ -37,6 +37,13 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        //validacion
+        $validatedData = $request->validate([
+            'producto' => 'required',
+            'cantidad' => 'required',
+            'estado' => 'required',
+            'bodega' => 'required'
+        ]);
         //Gurada los productos creados en la modal
         $producto = new Producto();
         $producto->producto = $request->producto;

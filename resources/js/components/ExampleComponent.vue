@@ -182,7 +182,7 @@ span, th{
                     <div class="modal-header">
                         <h5 class="modal-title font-weight-bold w-100 text-center">Crear Producto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" @click="showModal = false">X</span>
+                        <span aria-hidden="true" @click="clearData">X</span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -190,11 +190,17 @@ span, th{
                             <div class="form-group">
                                 <label for="inputProducto">Producto</label>
                                 <input type="text" v-model="producto" class="form-control" id="inputProducto">
+                                <div  v-if="errores.producto">
+                                        <span  style="color:red" v-text="errores.producto[0]" ></span>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="form-group col-sm-6">
                                     <label for="inputCantidad">Cantidad</label>
                                     <input type="number" v-model="cantidad" class="form-control" id="inputCantidad">
+                                    <div  v-if="errores.cantidad">
+                                        <span  style="color:red" v-text="errores.cantidad[0]" ></span>
+                                    </div>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="selectEstado">Estado</label>
@@ -203,6 +209,9 @@ span, th{
                                         <option value="1">Activo</option>
                                         <option value="0">Inactivo</option>
                                     </select>
+                                    <div  v-if="errores.estado">
+                                        <span  style="color:red" v-text="errores.estado[0]" ></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -214,6 +223,9 @@ span, th{
                                         <option value="3">Occidente</option>
                                         <option value="4">Sur</option>
                                     </select>
+                                <div  v-if="errores.bodega">
+                                        <span  style="color:red" v-text="errores.bodega[0]" ></span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputObservaciones">Observaciones</label>
@@ -224,7 +236,7 @@ span, th{
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-dark" @click="storeProductos">Guardar</button>
-                        <button type="button" class="btn btn-outline-dark" @click="showModal = false">Cancelar</button>
+                        <button type="button" class="btn btn-outline-dark" @click="clearData">Cancelar</button>
                     </div>
                     </div>
                 </div>
@@ -277,7 +289,8 @@ span, th{
                 bodega:'',
                 observaciones:'',
                 objectProductos: {},
-                buscarProducto:''
+                buscarProducto:'',
+                errores:""
             }
         },
         methods:{
@@ -306,6 +319,7 @@ span, th{
                     me.clearData();
                     me.getProductos();
                 }).catch(function(error){
+                    me.errores=error.response.data.errors;
                     console.log(error);
                 });
             },
@@ -346,7 +360,8 @@ span, th{
                 this.cantidad='',
                 this.estado='',
                 this.bodega='',
-                this.observaciones=''
+                this.observaciones='',
+                this.errores=''
             }
         },
         mounted() {
