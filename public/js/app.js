@@ -2076,6 +2076,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6687,7 +6715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n.modal-header[data-v-299e239e] {\n    border-bottom: 0 none;\n}\n.modal-footer[data-v-299e239e] {\n    border-top: 0 none;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable[data-v-299e239e], th[data-v-299e239e], td[data-v-299e239e]{\n    border-collapse: collapse !important;\n    border: 1px solid white !important;\n}\ntable thead[data-v-299e239e]{\n    border-bottom: 10px solid white !important;\n}\n/**Aliniacion */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n/**Color Impar */\n.table-striped>tbody>tr:nth-child(odd)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(odd)>th[data-v-299e239e] {\n    background-color: rgb(196, 193, 193);\n}\n/**Color par */\n.table-striped>tbody>tr:nth-child(even)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(even)>th[data-v-299e239e] {\n    background-color: rgba(232, 232, 233, 0.719);\n}\n /*Fin style for table */\n\n\n/**Quitar la negrita */\nspan[data-v-299e239e], th[data-v-299e239e]{\n    font-weight: normal !important;\n}\n/**Hacer ancho el spam */\n.badge[data-v-299e239e]{\n    width: 70px;\n}\n", ""]);
+exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n.modal-header[data-v-299e239e] {\n    border-bottom: 0 none;\n}\n.modal-footer[data-v-299e239e] {\n    border-top: 0 none;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable[data-v-299e239e], th[data-v-299e239e], td[data-v-299e239e]{\n    border-collapse: collapse !important;\n    border: 1px solid white !important;\n}\ntable thead[data-v-299e239e]{\n    border-bottom: 10px solid white !important;\n}\n/**Aliniacion */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n/**Color Impar */\n.table-striped>tbody>tr:nth-child(odd)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(odd)>th[data-v-299e239e] {\n    background-color: rgb(196, 193, 193);\n}\n/**Color par */\n.table-striped>tbody>tr:nth-child(even)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(even)>th[data-v-299e239e] {\n    background-color: rgba(232, 232, 233, 0.719);\n}\n /*Fin style for table */\n\n\n/**Quitar la negrita */\nspan[data-v-299e239e], th[data-v-299e239e]{\n    font-weight: normal !important;\n}\n/**Hacer ancho el spam */\n.badge[data-v-299e239e]{\n    width: 70px;\n}\n\n\n/**Inicio Paginador ::v-deep espara profundidad de los componentes child */\n[data-v-299e239e] .pagination > li > a\n{\n    background-color: black;\n    color: white;\n    border-radius: 10%;\n    margin: 4px;\n}\n[data-v-299e239e] .pagination > li > a:focus,[data-v-299e239e] .pagination > li > a:hover,[data-v-299e239e] .pagination > li > span:focus,[data-v-299e239e] .pagination > li > span:hover\n{\n    color: black;\n    background-color:white;\n    border-color: black;\n}\n[data-v-299e239e] .pagination > .active > a\n{\n    color: white;\n    background-color: rgba(7, 7, 7, 0.582);\n    border: solid 1.5px rgba(2, 0, 8, 0.452);\n}\n/**Inicio Paginador*/\n", ""]);
 
 // exports
 
@@ -38795,7 +38823,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-5" }, [
+    _c("div", { staticClass: "row mt-4 mb-12" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c(
           "table",
@@ -38879,7 +38907,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-6" }, [
+    _c("div", { staticClass: "row mt-4 mb-12" }, [
       _c(
         "div",
         { staticClass: "col-md-12" },

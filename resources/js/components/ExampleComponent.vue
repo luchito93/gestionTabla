@@ -80,6 +80,34 @@ span, th{
 .badge{
     width: 70px;
 }
+
+
+/**Inicio Paginador ::v-deep espara profundidad de los componentes child */
+::v-deep .pagination > li > a
+{
+    background-color: black;
+    color: white;
+    border-radius: 10%;
+    margin: 4px;
+}
+
+::v-deep .pagination > li > a:focus,
+::v-deep .pagination > li > a:hover,
+::v-deep .pagination > li > span:focus,
+::v-deep .pagination > li > span:hover
+{
+    color: black;
+    background-color:white;
+    border-color: black;
+}
+
+::v-deep .pagination > .active > a
+{
+    color: white;
+    background-color: rgba(7, 7, 7, 0.582);
+    border: solid 1.5px rgba(2, 0, 8, 0.452);
+}
+/**Inicio Paginador*/
 </style>
 
 
@@ -93,7 +121,7 @@ span, th{
                 <button type="button" @click="showModal = true" class="btn btn-dark float-md-right">Crear Producto</button>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-4 mb-12">
             <div class="col-md-12">
                 <table class="table table-bordered table-hover table-striped table-sm">
                     <thead class="thead-dark">
@@ -135,7 +163,7 @@ span, th{
                 </table>
             </div>
         </div>
-        <div class="row mt-6">
+        <div class="row mt-4 mb-12">
             <div class="col-md-12">
                 <pagination :data="objectProductos" @pagination-change-page="getProductos"
                 size="small" v-bind:show-disabled="true" align="right">
