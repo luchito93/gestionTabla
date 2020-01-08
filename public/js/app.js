@@ -1988,6 +1988,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6581,7 +6604,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n\n\n/*Fin style for table */\n", ""]);
+exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable[data-v-299e239e], th[data-v-299e239e], td[data-v-299e239e]{\n    border-collapse: collapse !important;\n    border: 1px solid white !important;\n}\ntable thead[data-v-299e239e]{\n    border-bottom: 10px solid white !important;\n}\n/**Aliniacion */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n/**Color Impar */\n.table-striped>tbody>tr:nth-child(odd)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(odd)>th[data-v-299e239e] {\n    background-color: rgb(196, 193, 193);\n}\n/**Color par */\n.table-striped>tbody>tr:nth-child(even)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(even)>th[data-v-299e239e] {\n    background-color: rgba(232, 232, 233, 0.719);\n}\n\n\n/*Fin style for table */\n", ""]);
 
 // exports
 
@@ -38123,9 +38146,17 @@ var render = function() {
                     domProps: { textContent: _vm._s(producto.cantidad) }
                   }),
                   _vm._v(" "),
-                  _c("td", {
-                    domProps: { textContent: _vm._s(producto.estado) }
-                  }),
+                  producto.estado === "1"
+                    ? _c("td", [
+                        _c("span", { staticClass: "badge badge-success" }, [
+                          _vm._v("Activo")
+                        ])
+                      ])
+                    : _c("td", [
+                        _c("span", { staticClass: "badge badge-danger" }, [
+                          _vm._v("Inactivo")
+                        ])
+                      ]),
                   _vm._v(" "),
                   _vm._m(2, true)
                 ])

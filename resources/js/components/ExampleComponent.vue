@@ -40,12 +40,30 @@
 /*FIn  Style for button redondo */
 
 /*Inicio style for table */
+table, th, td{
+    border-collapse: collapse !important;
+    border: 1px solid white !important;
+}
+table thead{
+    border-bottom: 10px solid white !important;
+}
+/**Aliniacion */
 table td,th {
     text-align: center;
 }
 table td:first-child,th:first-child{
     text-align: left;
 }
+/**Color Impar */
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: rgb(196, 193, 193);
+ }
+/**Color par */
+ .table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+    background-color: rgba(232, 232, 233, 0.719);
+ }
 
 
 /*Fin style for table */
@@ -79,7 +97,12 @@ table td:first-child,th:first-child{
                             <td v-text="producto.producto"></td>
                             <td v-text="producto.bodega"></td>
                             <td v-text="producto.cantidad"></td>
-                            <td v-text="producto.estado"></td>
+                            <td v-if="producto.estado === '1'">
+                                <span class="badge badge-success">Activo</span>
+                            </td>
+                            <td v-else>
+                                <span class="badge badge-danger">Inactivo</span>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-dark btn-sm">Cambiar estado</button>
                             </td>
