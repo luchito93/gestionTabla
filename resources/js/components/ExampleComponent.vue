@@ -115,7 +115,7 @@ span, th{
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="buscar">
+                <input type="text" class="form-control" v-on:keyup="buscar" v-model="buscarProducto" placeholder="buscar">
             </div>
             <div class="col-md-3 offset-md-5">
                 <button type="button" @click="showModal = true" class="btn btn-dark float-md-right">Crear Producto</button>
@@ -276,7 +276,8 @@ span, th{
                 estado:'',
                 bodega:'',
                 observaciones:'',
-                objectProductos: {}
+                objectProductos: {},
+                buscarProducto:''
             }
         },
         methods:{
@@ -319,6 +320,25 @@ span, th{
                 }).catch(function(error){
                     console.log(error);
                 });
+            },
+            buscar(){
+                let me = this;
+                if(me.buscarProducto === ''){
+                    me.getProductos();
+                }
+                else{
+                    let url = '/productos/buscar'
+                    axios.get(url,{
+                         params: {
+                            valor: this.buscarProducto
+                         }
+                    }).then(function(response){
+                        me.objectProductos = response.data;
+                    }).catch(function(error){
+                        console.log(error);
+                    });
+                }
+
             },
             clearData(){
                 this.showModal= false,

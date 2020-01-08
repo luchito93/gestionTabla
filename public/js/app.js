@@ -2115,7 +2115,8 @@ __webpack_require__.r(__webpack_exports__);
       estado: '',
       bodega: '',
       observaciones: '',
-      objectProductos: {}
+      objectProductos: {},
+      buscarProducto: ''
     };
   },
   methods: {
@@ -2159,6 +2160,24 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    buscar: function buscar() {
+      var me = this;
+
+      if (me.buscarProducto === '') {
+        me.getProductos();
+      } else {
+        var url = '/productos/buscar';
+        axios.get(url, {
+          params: {
+            valor: this.buscarProducto
+          }
+        }).then(function (response) {
+          me.objectProductos = response.data;
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
     },
     clearData: function clearData() {
       this.showModal = false, this.producto = '', this.cantidad = '', this.estado = '', this.bodega = '', this.observaciones = '';
@@ -38804,7 +38823,30 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.buscarProducto,
+              expression: "buscarProducto"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "buscar" },
+          domProps: { value: _vm.buscarProducto },
+          on: {
+            keyup: _vm.buscar,
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.buscarProducto = $event.target.value
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-3 offset-md-5" }, [
         _c(
@@ -38832,7 +38874,7 @@ var render = function() {
               "table table-bordered table-hover table-striped table-sm"
           },
           [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -39356,17 +39398,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "buscar" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
