@@ -11,15 +11,15 @@
 ![](Crud.gif)
 
 
-## Intalación del Proyecto
+## Instalación del Proyecto
 
 - Clonar
-- Instala las dependencias de laravel, recuerda que debes tener tu archivo .env creado
+- Instalar las dependencias de laravel, recuerda que debes tener tu archivo .env creado
 - php artisan composer install
 - npm install
-- Realiza la migracion php artisan migrate  
+- Realizar la migracion php artisan migrate  
 
-Nota: de preferencia puedes utilizar laragon
+Nota: de preferencia puedes utilizar Laragon.
 
 ## License
 
