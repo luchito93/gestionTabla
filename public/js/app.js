@@ -2011,10 +2011,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       showModal: false,
+      showCambiarEstado: false,
+      id: '',
       producto: '',
       cantidad: '',
       estado: '',
@@ -2045,6 +2086,18 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         me.clearData();
         me.getProductos();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    updateEstado: function updateEstado() {
+      var me = this;
+      var url = '/productos/actualizar';
+      axios.put(url, {
+        'id': this.id
+      }).then(function (response) {
+        me.getProductos();
+        me.showCambiarEstado = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -6604,7 +6657,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable[data-v-299e239e], th[data-v-299e239e], td[data-v-299e239e]{\n    border-collapse: collapse !important;\n    border: 1px solid white !important;\n}\ntable thead[data-v-299e239e]{\n    border-bottom: 10px solid white !important;\n}\n/**Aliniacion */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n/**Color Impar */\n.table-striped>tbody>tr:nth-child(odd)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(odd)>th[data-v-299e239e] {\n    background-color: rgb(196, 193, 193);\n}\n/**Color par */\n.table-striped>tbody>tr:nth-child(even)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(even)>th[data-v-299e239e] {\n    background-color: rgba(232, 232, 233, 0.719);\n}\n\n\n/*Fin style for table */\n", ""]);
+exports.push([module.i, "\n/*inicio  Style for modal */\n.modal-mask[data-v-299e239e] {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, .5);\n  display: table;\n  -webkit-transition: opacity .3s ease;\n  transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-299e239e] {\n  display: table-cell;\n  vertical-align: middle;\n}\n.modal-header[data-v-299e239e] {\n    border-bottom: 0 none;\n}\n.modal-footer[data-v-299e239e] {\n    border-top: 0 none;\n}\n/*Fin  Style for modal */\n\n/*Inicio  Style for button redondo */\n.modal-header .close[data-v-299e239e] {\n    float: right !important;\n    margin-right: -35px !important;\n    margin-top: -40px !important;\n    background-color: black !important;\n    border-radius: 200% !important;\n    width: 50px !important;\n    height: 50px !important;\n    opacity: 1 !important;\n    color: white !important;\n    font-size: 18px !important;\n    font-weight: normal !important;\n}\n.modal-header .close[data-v-299e239e]:hover{\n    font-size: 20px !important;\n    font-weight: bold !important;\n}\n/*FIn  Style for button redondo */\n\n/*Inicio style for table */\ntable[data-v-299e239e], th[data-v-299e239e], td[data-v-299e239e]{\n    border-collapse: collapse !important;\n    border: 1px solid white !important;\n}\ntable thead[data-v-299e239e]{\n    border-bottom: 10px solid white !important;\n}\n/**Aliniacion */\ntable td[data-v-299e239e],th[data-v-299e239e] {\n    text-align: center;\n}\ntable td[data-v-299e239e]:first-child,th[data-v-299e239e]:first-child{\n    text-align: left;\n}\n/**Color Impar */\n.table-striped>tbody>tr:nth-child(odd)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(odd)>th[data-v-299e239e] {\n    background-color: rgb(196, 193, 193);\n}\n/**Color par */\n.table-striped>tbody>tr:nth-child(even)>td[data-v-299e239e],\n.table-striped>tbody>tr:nth-child(even)>th[data-v-299e239e] {\n    background-color: rgba(232, 232, 233, 0.719);\n}\n /*Fin style for table */\n\n\n/**Quitar la negrita */\nspan[data-v-299e239e], th[data-v-299e239e]{\n    font-weight: normal !important;\n}\n/**Hacer ancho el spam */\n.badge[data-v-299e239e]{\n    width: 70px;\n}\n", ""]);
 
 // exports
 
@@ -38158,7 +38211,22 @@ var render = function() {
                         ])
                       ]),
                   _vm._v(" "),
-                  _vm._m(2, true)
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            ;(_vm.showCambiarEstado = true),
+                              (_vm.id = producto.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Cambiar estado")]
+                    )
+                  ])
                 ])
               }),
               0
@@ -38453,6 +38521,102 @@ var render = function() {
           ],
           1
         )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showCambiarEstado
+      ? _c(
+          "div",
+          [
+            _c("transition", { attrs: { name: "modal" } }, [
+              _c("div", { staticClass: "modal-mask" }, [
+                _c("div", { staticClass: "modal-wrapper" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog modal-sm",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-header" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              attrs: {
+                                type: "button",
+                                "data-dismiss": "modal",
+                                "aria-label": "Close"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.showCambiarEstado = false
+                                }
+                              }
+                            },
+                            [
+                              _c("span", { attrs: { "aria-hidden": "true" } }, [
+                                _vm._v("X")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c(
+                            "h4",
+                            {
+                              staticClass:
+                                "modal-title font-weight-bold w-100 text-center"
+                            },
+                            [
+                              _vm._v(
+                                "¿Esta Seguro de querer cambiar el estado?"
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal-footer justify-content-center"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-dark",
+                                attrs: { type: "button" },
+                                on: { click: _vm.updateEstado }
+                              },
+                              [_vm._v("Si")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-outline-dark",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.showCambiarEstado = false
+                                  }
+                                }
+                              },
+                              [_vm._v("No")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ],
+          1
+        )
       : _vm._e()
   ])
 }
@@ -38484,18 +38648,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Gestión")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        { staticClass: "btn btn-dark btn-sm", attrs: { type: "button" } },
-        [_vm._v("Cambiar estado")]
-      )
     ])
   }
 ]

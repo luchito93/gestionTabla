@@ -77,22 +77,18 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request)
     {
         //Actualizar el estado del producto
-        $producto = findOrfail($request->id);
+        $producto = Producto::Find($request->id);
 
-        $producto->producto = $request->producto;
-        $producto->cantidad = $request->cantidad;
-        $producto->estado = $request->estado;
-        $producto->bodega = $request->bodega;
-        $producto->observaciones = $request->observaciones;
-
+        if($producto->estado == '1'){
+            $producto->estado = '0';
+        }
+        else{
+            $producto->estado = '1';
+        }
         $producto->save();
-
-        return $producto;
-
-
     }
 
     /**

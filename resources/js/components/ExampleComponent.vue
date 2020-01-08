@@ -11,11 +11,16 @@
   display: table;
   transition: opacity .3s ease;
 }
-
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
 
+}
+.modal-header {
+    border-bottom: 0 none;
+}
+.modal-footer {
+    border-top: 0 none;
 }
 /*Fin  Style for modal */
 
@@ -64,9 +69,17 @@ table td:first-child,th:first-child{
 .table-striped>tbody>tr:nth-child(even)>th {
     background-color: rgba(232, 232, 233, 0.719);
  }
+ /*Fin style for table */
 
 
-/*Fin style for table */
+/**Quitar la negrita */
+span, th{
+    font-weight: normal !important;
+}
+/**Hacer ancho el spam */
+.badge{
+    width: 70px;
+}
 </style>
 
 
@@ -104,7 +117,7 @@ table td:first-child,th:first-child{
                                 <span class="badge badge-danger">Inactivo</span>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-dark btn-sm">Cambiar estado</button>
+                                <button type="button" class="btn btn-dark btn-sm" @click="showCambiarEstado=true,id=producto.id">Cambiar estado</button>
                             </td>
                         </tr>
                     </tbody>
@@ -164,8 +177,34 @@ table td:first-child,th:first-child{
                 </div>
             </div>
             </transition>
-  </div>
+         </div>
         <!--Fin Ventana Modal-->
+        <!--Inicio Ventana Cambiar estado-->
+        <div v-if="showCambiarEstado">
+            <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="showCambiarEstado = false">
+                        <span aria-hidden="true">X</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal-title font-weight-bold w-100 text-center">¿Esta Seguro de querer cambiar el estado?</h4>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark" @click="updateEstado">Si</button>
+                        <button type="button" class="btn btn-outline-dark" @click="showCambiarEstado = false">No</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </transition>
+         </div>
+        <!--Fin Ventana Cambiar estado-->
     </div>
 </template>
 
@@ -176,6 +215,8 @@ table td:first-child,th:first-child{
         data() {
             return {
                 showModal: false,
+                showCambiarEstado: false,
+                id:'',
                 producto:'',
                 cantidad:'',
                 estado:'',
@@ -206,6 +247,18 @@ table td:first-child,th:first-child{
                 }).then(function(response){
                     me.clearData();
                     me.getProductos();
+                }).catch(function(error){
+                    console.log(error);
+                });
+            },
+            updateEstado(){
+                let me = this;
+                let url = '/productos/actualizar'
+                axios.put(url,{
+                    'id': this.id
+                }).then(function(response){
+                    me.getProductos();
+                    me.showCambiarEstado= false;
                 }).catch(function(error){
                     console.log(error);
                 });
