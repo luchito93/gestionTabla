@@ -18,7 +18,7 @@ class CreateProductosTable extends Migration
             $table->string('producto',100);
             $table->integer('cantidad');
             $table->char('estado',1);
-            $table->string('bodega',100);
+            $table->char('bodega',1);
             $table->string('observaciones',400)->nullable();
             $table->timestamps();
         });

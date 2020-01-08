@@ -106,9 +106,20 @@ span, th{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="producto in arrayProductos" :key="producto.id">
+                        <tr v-for="producto in objectProductos.data" :key="producto.id">
                             <td v-text="producto.producto"></td>
-                            <td v-text="producto.bodega"></td>
+                            <td v-if="producto.bodega === '1'">
+                                Centro
+                            </td>
+                            <td v-else-if="producto.bodega === '2'">
+                                Oriente
+                            </td>
+                            <td v-else-if="producto.bodega === '3'">
+                                Occidente
+                            </td>
+                            <td v-else>
+                                Sur
+                            </td>
                             <td v-text="producto.cantidad"></td>
                             <td v-if="producto.estado === '1'">
                                 <span class="badge badge-success">Activo</span>
@@ -122,6 +133,15 @@ span, th{
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-12">
+                <pagination :data="objectProductos" @pagination-change-page="getProductos"
+                size="small" v-bind:show-disabled="true" align="right">
+                    <span slot="prev-nav">Atrás</span>
+                    <span slot="next-nav">Adelante</span>
+                </pagination>
             </div>
         </div>
         <!--Inicio Ventana Modal-->
@@ -159,7 +179,13 @@ span, th{
                             </div>
                             <div class="form-group">
                                 <label for="inputBodega">Bodega</label>
-                                <input type="text" v-model="bodega" class="form-control" id="inputBodega">
+                                <select v-model="bodega" class="form-control" id="inputBodega">
+                                        <option selected>Elige...</option>
+                                        <option value="1">Centro</option>
+                                        <option value="2">Oriente</option>
+                                        <option value="3">Occidente</option>
+                                        <option value="4">Sur</option>
+                                    </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputObservaciones">Observaciones</label>
@@ -222,15 +248,18 @@ span, th{
                 estado:'',
                 bodega:'',
                 observaciones:'',
-                arrayProductos: []
+                objectProductos: {}
             }
         },
         methods:{
-            getProductos(){
+            getProductos(page){
+                if (typeof page === 'undefined') {
+                    page = 1;
+                }
                 let me = this;
-                let url = '/productos'
-                axios.get(url).then(function(response){
-                    me.arrayProductos = response.data;
+                let url = '/productos?page='
+                axios.get(url + page).then(function(response){
+                    me.objectProductos = response.data;
                 }).catch(function(error){
                     console.log(error);
                 });
