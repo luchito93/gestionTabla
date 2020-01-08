@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+
+![](Crud.gif)
+
+
 ## Intalacion del Projecto
 
 - Clonar
@@ -15,7 +19,7 @@
 - npm install
 - Realiza la migracion php artisan migrate  
 
-
+Nota: de preferencia puedes utilizar laragon
 
 ## License
 
